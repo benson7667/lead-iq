@@ -12,17 +12,18 @@
     "start_server": "serve ./dist",
     "lint": "eslint --ext .jsx --ext .js src"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.{js,jsx}": [
+      "npm run lint",
       "prettier --write",
       "eslint --fix",
       "git add"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "keywords": [
     "benson",
