@@ -10,7 +10,8 @@
     "build": "webpack --config webpack/webpack.prod.js",
     "build:dev": "BUILD_ENV=dev npm run build",
     "start_server": "serve ./dist",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "lint": "eslint --ext .jsx --ext .js src"
   },
   "husky": {
     "hooks": {
