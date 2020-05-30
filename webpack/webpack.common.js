@@ -2,6 +2,7 @@ const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: ['@babel/polyfill', './src/index.js'],
@@ -38,22 +39,17 @@ module.exports = {
         test: /\.(css)$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
-      {
-        test: /\.(sass)$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
-          'sass-loader',
-        ],
-      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: '',
-      description: '',
+      title: 'LeadIQ',
+      description:
+        'An assignment given by LeadIQ to create a Github user search page.',
       template: './public/index.html',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [{ from: path.join(__dirname, '../public/favicon.ico') }],
     }),
     new MiniCssExtractPlugin({
       filename: 'assets/css/[name].[hash].css',

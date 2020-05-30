@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
-import './assets/css/index.css'
+import AppRoutes from './AppRoutes'
+import './assets/styles/index.less'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<AppRoutes />, document.getElementById('root'))
