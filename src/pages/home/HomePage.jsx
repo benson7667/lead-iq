@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
-import { object } from 'prop-types'
+import { object, func } from 'prop-types'
 import { SearchBox } from '../../components'
 import { constructQueryParams } from '../../utils/url'
 
 class HomePage extends Component {
   handleSearch = (query) => {
+    const { searchGithubUser, history } = this.props
     const queryString = constructQueryParams({ q: query })
-    this.props.history.push({
+
+    searchGithubUser({ q: query })
+    history.push({
       pathname: '/search-result',
       search: queryString,
     })
@@ -23,6 +26,7 @@ class HomePage extends Component {
 
 HomePage.propTypes = {
   history: object,
+  searchGithubUser: func.isRequired,
 }
 
 export default HomePage

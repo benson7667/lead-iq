@@ -1,32 +1,95 @@
 import React, { Component } from 'react'
-import { UserCard } from '../../components'
+import { array, bool, object, func, number } from 'prop-types'
+import { Button, UserCard } from '../../components'
+import { parseQueryString } from '../../utils/url'
 import './styles.less'
 
 class SearchResultPage extends Component {
+  state = { page: 1, per_page: 30 }
+
+  componentDidMount() {
+    const { searchResult, location } = this.props
+    // user probably refresh the page, refetch data based on query string
+    const query = parseQueryString(location)
+    if (query && query.q && !searchResult.length) {
+      this.queryGithubUser()
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { page } = this.state
+
+    // load next page data
+    if (prevState.page !== page && page > prevState.page) {
+      this.queryGithubUser(true)
+    }
+  }
+
+  queryGithubUser = (isLoadMore = false) => {
+    const { location, searchGithubUser } = this.props
+    const { page, per_page } = this.state
+    const { q } = parseQueryString(location)
+    searchGithubUser({ q, page, per_page, isLoadMore })
+  }
+
+  handleLoadMore = () => {
+    this.setState((prevState) => ({
+      page: prevState.page + 1,
+    }))
+  }
+
+  renderUserList = () => {
+    const { searchResult, searchError } = this.props
+    if (searchResult && searchResult.length && !searchError) {
+      return searchResult.map((user, index) => (
+        <div className='search-result-item' key={index}>
+          <UserCard
+            avatarUrl={user.avatar_url}
+            location=''
+            loginName={user.login}
+          />
+        </div>
+      ))
+    }
+  }
+
   render() {
+    const { isLoadingSearch, searchTotalCount } = this.props
+
     return (
       <div className='search-result-container'>
         <div className='pt30 pb30 c-accent'>
-          <h1>Search Result: 121 users found</h1>
+          <h1>{`Search Result: ${searchTotalCount} users found`}</h1>
         </div>
 
         <div className='search-result-list'>
-          {new Array(10).fill('').map((card, index) => (
-            <div className='search-result-item' key={index}>
-              <UserCard
-                avatarUrl='https://avatars2.githubusercontent.com/u/37457?s=200&v=4'
-                location='Seattle, WA'
-                loginName='Benson Toh'
-              />
-            </div>
-          ))}
+          {this.renderUserList()}
           <div className='search-result-item' />
           <div className='search-result-item' />
           <div className='search-result-item' />
+        </div>
+
+        <div className='tc mt34 mb34'>
+          <Button
+            className='btn-default'
+            isSubmitting={isLoadingSearch}
+            onClick={this.handleLoadMore}
+          >
+            Load More
+          </Button>
         </div>
       </div>
     )
   }
+}
+
+SearchResultPage.propTypes = {
+  isLoadingSearch: bool.isRequired,
+  location: object.isRequired,
+  searchError: object,
+  searchGithubUser: func.isRequired,
+  searchResult: array,
+  searchTotalCount: number,
 }
 
 export default SearchResultPage

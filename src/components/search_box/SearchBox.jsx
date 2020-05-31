@@ -30,7 +30,7 @@ class SearchBox extends Component {
 
     return (
       <div>
-        <h1 className='fw3 mb10 tc'>Github User Search</h1>
+        <h1 className='fw3 mb14 tc'>Github User Search</h1>
         <div className='user-search-box shadow1 pa20 tc'>
           <img src={GihubLogo} style={{ width: '70px', height: '70px' }} />
           <form className='flex mt14 mb14' onSubmit={this.handleSearch}>
