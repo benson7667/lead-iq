@@ -6,8 +6,8 @@ class SearchResultPage extends Component {
   render() {
     return (
       <div className='search-result-container'>
-        <div className='search-result-count'>
-          <h1>121 users</h1>
+        <div className='pt30 pb30 c-accent'>
+          <h1>Search Result: 121 users found</h1>
         </div>
 
         <div className='search-result-list'>

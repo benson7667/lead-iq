@@ -1,0 +1,49 @@
+@import './colors.less';
+
+// divider
+.divider-vertical {
+  width: 1px;
+  height: 100%;
+  margin: 0 20px;
+  background-color: @color-grey-bb;
+}
+
+// shadow
+.shadow1 {
+  box-shadow: 0 0 20px @color-shadow;
+}
+
+// card view
+.card-view {
+  cursor: pointer;
+  padding: 20px;
+  box-shadow: 0 0 20px @color-shadow;
+  background-color: @color-white;
+  transition: background-color 0.2s ease-in;
+
+  &:hover {
+    background-color: @color-grey-ec;
+  }
+}
+
+// linear-gradient
+.linear-gradient1 {
+  background: linear-gradient(to left, @color-primary, @color-accent);
+}
+
+// button
+.btn-default {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: @color-primary;
+  color: @color-white;
+  width: 140px;
+  transition: background-color 0.3s ease-in;
+
+  &:hover {
+    background-color: @color-grey-4a;
+  }
+}

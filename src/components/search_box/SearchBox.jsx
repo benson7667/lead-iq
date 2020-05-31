@@ -30,21 +30,17 @@ class SearchBox extends Component {
 
     return (
       <div>
-        <h1 className='search-title'>Github User Search</h1>
-        <div className='search-container'>
-          <img
-            alt='github-logo'
-            className='search-github-logo'
-            src={GihubLogo}
-          />
-          <form className='search-field-wrapper' onSubmit={this.handleSearch}>
+        <h1 className='fw3 mb10 tc'>Github User Search</h1>
+        <div className='user-search-box shadow1 pa20 tc'>
+          <img src={GihubLogo} style={{ width: '70px', height: '70px' }} />
+          <form className='flex mt14 mb14' onSubmit={this.handleSearch}>
             <input
-              className='search-field-input'
+              className='w-100 pa12 no-outline f14 b-primary'
               onChange={this.handleOnChange}
               placeholder='Search me @benson7667'
               value={value}
             />
-            <button className='search-field-btn' onClick={this.handleSearch}>
+            <button className='btn-default' onClick={this.handleSearch}>
               Search
             </button>
           </form>

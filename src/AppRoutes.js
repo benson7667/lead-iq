@@ -3,19 +3,15 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import HomePage from './pages/home/HomePage'
 import SearchResultPage from './pages/search_result/SearchResultPage'
-
-import * as Routes from './constants/routes'
+import UserProfilePage from './pages/user_profile/UserProfilePage'
 
 const AppRoutes = () => {
   return (
     <Router>
       <Switch>
-        <Route component={HomePage} exact path={Routes.HOME_ROUTE} />
-        <Route
-          component={SearchResultPage}
-          exact
-          path={Routes.SEARCH_RESULT_ROUTE}
-        />
+        <Route component={HomePage} exact path='/' />
+        <Route component={SearchResultPage} exact path='/search-result' />
+        <Route component={UserProfilePage} exact path='/user-profile/:id' />
       </Switch>
     </Router>
   )
