@@ -14,7 +14,7 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div className='flex w-100vw h-100vh justify-center item-center'>
+      <div className='flex justify-center item-center mt100'>
         <SearchBox onSearch={this.handleSearch} />
       </div>
     )
