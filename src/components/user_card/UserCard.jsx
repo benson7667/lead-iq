@@ -8,7 +8,10 @@ const UserCard = (props) => {
   const { loginName, avatarUrl, location } = props
 
   return (
-    <Link className='link-default' to={{ pathname: '/user-profile/benson' }}>
+    <Link
+      className='link-default'
+      to={{ pathname: `/user-profile/${loginName}` }}
+    >
       <div className='card-view flex'>
         <div className='w70 h70 overflow-hidden br-circle mr20'>
           <img className='user-card__avatar-img' src={avatarUrl} />

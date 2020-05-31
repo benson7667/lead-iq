@@ -6,3 +6,6 @@ export const searchGithubUserApi = (data) => {
     (res) => res.data
   )
 }
+
+export const getUserProfileApi = (userId) =>
+  get(`/users/${userId}`).then((res) => res.data)

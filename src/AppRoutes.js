@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import HomePageContainer from './pages/home/HomePageContainer'
 import SearchResultPageContainer from './pages/search_result/SearchResultPageContainer'
-import UserProfilePage from './pages/user_profile/UserProfilePage'
+import UserProfilePageContainer from './pages/user_profile/UserProfilePageContainer'
 
 const AppRoutes = () => {
   return (
@@ -15,7 +15,11 @@ const AppRoutes = () => {
           exact
           path='/search-result'
         />
-        <Route component={UserProfilePage} exact path='/user-profile/:id' />
+        <Route
+          component={UserProfilePageContainer}
+          exact
+          path='/user-profile/:userId'
+        />
       </Switch>
     </Router>
   )
