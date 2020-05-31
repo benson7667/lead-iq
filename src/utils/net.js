@@ -3,6 +3,10 @@ import config from '../config'
 
 const agent = axios.create({
   baseURL: config.apiHost,
+  data: {
+    client_id: config.clientId,
+    client_secret: config.clientSecret,
+  },
 })
 
 const get = (uri, options = {}) => agent.get(uri, options)
