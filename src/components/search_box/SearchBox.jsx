@@ -20,7 +20,7 @@ class SearchBox extends Component {
   handleSearch = (e) => {
     e.preventDefault()
     const { value } = this.state
-    if (value.trim !== '') {
+    if (value.trim() !== '') {
       this.props.onSearch(value)
     }
   }

@@ -1,14 +1,21 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Home from './pages/home'
+
+import HomePage from './pages/home/HomePage'
+import SearchResultPage from './pages/search_result/SearchResultPage'
+
+import * as Routes from './constants/routes'
 
 const AppRoutes = () => {
   return (
     <Router>
       <Switch>
-        <Route path='/'>
-          <Home />
-        </Route>
+        <Route component={HomePage} exact path={Routes.HOME_ROUTE} />
+        <Route
+          component={SearchResultPage}
+          exact
+          path={Routes.SEARCH_RESULT_ROUTE}
+        />
       </Switch>
     </Router>
   )
