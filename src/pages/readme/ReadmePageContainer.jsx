@@ -13,6 +13,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   getMarkdownContent: Actions.GET_README_MARKDOWN_REQUEST,
+  cleanMarkdownContent: Actions.CLEAN_README_MARKDOWN,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReadmePageContainer)

@@ -1,11 +1,11 @@
 import React from 'react'
-import { number, string } from 'prop-types'
+import { bool, number, string } from 'prop-types'
 import './styles.less'
 
 const DotLoader = (props) => {
-  const { color, radius } = props
+  const { color, radius, fullPage } = props
   return (
-    <div className='eatigo-dot-loader'>
+    <div className={`dot-loader ${fullPage ? 'full-page' : ''}`}>
       {[1, 2, 3].map((dot) => (
         <span
           key={dot}
@@ -23,9 +23,11 @@ const DotLoader = (props) => {
 DotLoader.defaultProps = {
   radius: 6,
   color: '#fff',
+  fullPage: false,
 }
 DotLoader.propTypes = {
   color: string,
+  fullPage: bool,
   radius: number,
 }
 

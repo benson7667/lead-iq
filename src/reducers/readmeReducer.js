@@ -28,6 +28,9 @@ const profileReducer = (state = defaultState, action) => {
         isLoadingGetReadmeMarkdown: false,
       }
 
+    case ActionTypes.CLEAN_README_MARKDOWN:
+      return defaultState
+
     default:
       return state
   }

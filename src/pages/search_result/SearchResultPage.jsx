@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { array, bool, object, func, number } from 'prop-types'
-import { Button, UserCard } from '../../components'
+import { Button, UserCard, DotLoader } from '../../components'
 import { parseQueryString } from '../../utils/url'
 import './styles.less'
 
@@ -38,16 +38,17 @@ class SearchResultPage extends Component {
     }))
   }
 
+  shouldRenderLoadMoreButton = () => {
+    const { searchTotalCount, searchResult } = this.props
+    return searchResult && searchResult.length < searchTotalCount
+  }
+
   renderUserList = () => {
     const { searchResult, searchError } = this.props
     if (searchResult && searchResult.length && !searchError) {
       return searchResult.map((user, index) => (
         <div className='search-result-item' key={index}>
-          <UserCard
-            avatarUrl={user.avatar_url}
-            location=''
-            loginName={user.login}
-          />
+          <UserCard avatarUrl={user.avatar_url} loginName={user.login} />
         </div>
       ))
     }
@@ -55,6 +56,10 @@ class SearchResultPage extends Component {
 
   render() {
     const { isLoadingSearch, searchTotalCount } = this.props
+
+    if (isLoadingSearch && this.state.page === 1) {
+      return <DotLoader color='#000' fullPage radius={10} />
+    }
 
     return (
       <div className='search-result-container'>
@@ -69,15 +74,17 @@ class SearchResultPage extends Component {
           <div className='search-result-item' />
         </div>
 
-        <div className='tc mt34 mb34'>
-          <Button
-            className='btn-default'
-            isSubmitting={isLoadingSearch}
-            onClick={this.handleLoadMore}
-          >
-            Load More
-          </Button>
-        </div>
+        {this.shouldRenderLoadMoreButton() && (
+          <div className='tc mt34 mb34'>
+            <Button
+              className='btn-default'
+              isSubmitting={isLoadingSearch}
+              onClick={this.handleLoadMore}
+            >
+              Load More
+            </Button>
+          </div>
+        )}
       </div>
     )
   }

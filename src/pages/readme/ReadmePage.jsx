@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { bool, func, object, string } from 'prop-types'
 import ReactMarkdown from 'react-markdown'
+import { DotLoader, EmptyContent } from '../../components'
 import 'github-markdown-css'
 import './styles.less'
 
@@ -17,11 +18,28 @@ class ReadmePage extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.cleanMarkdownContent()
+  }
+
   render() {
-    const { isLoadingGetReadmeMarkdown, readmeMarkdown } = this.props
+    const {
+      isLoadingGetReadmeMarkdown,
+      readmeMarkdown,
+      readmeError,
+    } = this.props
 
     if (isLoadingGetReadmeMarkdown) {
-      return <div>loading...</div>
+      return <DotLoader color='#000' fullPage radius={10} />
+    }
+
+    if (!isLoadingGetReadmeMarkdown && readmeError) {
+      return (
+        <EmptyContent
+          subText='This repository do not have a readme file'
+          text='No Readme File'
+        />
+      )
     }
 
     return (
@@ -35,6 +53,7 @@ class ReadmePage extends Component {
 }
 
 ReadmePage.propTypes = {
+  cleanMarkdownContent: func.isRequired,
   getMarkdownContent: func.isRequired,
   isLoadingGetReadmeMarkdown: bool.isRequired,
   match: object,

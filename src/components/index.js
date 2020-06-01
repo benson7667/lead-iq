@@ -1,6 +1,7 @@
 export { default as Button } from './button'
-export { default as DotLoader } from './dot-loader'
+export { default as DotLoader } from './dot_loader'
 export { default as Link } from './link'
 export { default as SearchBox } from './search_box'
 export { default as UserCard } from './user_card'
 export { default as RepoCard } from './repo_card'
+export { default as EmptyContent } from './empty_content'

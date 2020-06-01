@@ -10,19 +10,22 @@ const Repos = (props) => {
     <section className='ml50 mr50'>
       <h1 className='mb14'>Repositories</h1>
       <ul className='user-project-list'>
-        {repos.map((repo) => {
-          const { id, repoName, description, language, updatedAt } = repo
-          return (
-            <div className='user-project-item' key={id}>
-              <RepoCard
-                description={description}
-                language={language}
-                title={repoName}
-                updatedAt={formatDateAgo(updatedAt)}
-              />
-            </div>
-          )
-        })}
+        {repos.length > 0 &&
+          repos.map((repo) => {
+            const { id, repoName, description, language, updatedAt } = repo
+            return (
+              <div className='user-project-item' key={id}>
+                <RepoCard
+                  description={description}
+                  language={language}
+                  title={repoName}
+                  updatedAt={formatDateAgo(updatedAt)}
+                />
+              </div>
+            )
+          })}
+
+        {repos.length === 0 && <div>This user has no repository</div>}
       </ul>
     </section>
   )

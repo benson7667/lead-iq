@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { array, func, object, bool } from 'prop-types'
+import { DotLoader } from '../../components'
 import Repos from './repos/Repos'
 import ProfileHeader from './header/ProfileHeader'
 import './styles.less'
@@ -19,7 +20,7 @@ class UserProfilePage extends Component {
     const { isLoadingGetProfile, profileInfo, repos } = this.props
 
     if (isLoadingGetProfile) {
-      return <div>Loading...</div>
+      return <DotLoader color='#000' fullPage radius={10} />
     }
 
     return (
