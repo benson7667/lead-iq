@@ -23,4 +23,4 @@ npm install && npm run dev
 https://confident-lovelace-aa2bae.netlify.app/
 
 ## Feel free to check other assignment that I have done 🙂
-- https://github.com/benson7667?tab=repositories
+https://github.com/benson7667?tab=repositories
