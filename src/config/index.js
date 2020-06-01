@@ -2,6 +2,7 @@
 // run application with minimum effort
 const config = {
   apiHost: process.env.API_HOST,
+  markDownApiHost: process.env.MARKDOWN_API_HOST,
   clientId: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
 }
