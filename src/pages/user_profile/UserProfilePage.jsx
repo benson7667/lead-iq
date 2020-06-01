@@ -16,7 +16,7 @@ class UserProfilePage extends Component {
   }
 
   render() {
-    const { isLoadingGetProfile, profileInfo } = this.props
+    const { isLoadingGetProfile, profileInfo, repos } = this.props
 
     if (isLoadingGetProfile) {
       return <div>Loading...</div>
@@ -25,7 +25,7 @@ class UserProfilePage extends Component {
     return (
       <main className='mw960'>
         <ProfileHeader profileInfo={profileInfo} />
-        <Repos />
+        <Repos repos={repos} />
       </main>
     )
   }
@@ -37,6 +37,7 @@ UserProfilePage.propTypes = {
   match: object.isRequired,
   profileError: object,
   profileInfo: object.isRequired,
+  repos: object,
 }
 
 export default UserProfilePage

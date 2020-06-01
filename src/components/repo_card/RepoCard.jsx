@@ -16,7 +16,7 @@ const RepoCard = (props) => {
         <div className='flex fw3 f12 c-83 mt14'>
           <span>{language}</span>
           <span className='ml8 mr8 c-primary'>&#8226;</span>
-          <span>{updatedAt}</span>
+          <span>{`Updated ${updatedAt}`}</span>
         </div>
       </div>
     </Link>
