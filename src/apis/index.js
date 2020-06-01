@@ -9,3 +9,8 @@ export const searchGithubUserApi = (data) => {
 
 export const getUserProfileApi = (userId) =>
   get(`/users/${userId}`).then((res) => res.data)
+
+export const getUserReposApi = (userId) =>
+  get(`/users/${userId}/repos`, { params: { sort: 'updated' } }).then(
+    (res) => res.data
+  )

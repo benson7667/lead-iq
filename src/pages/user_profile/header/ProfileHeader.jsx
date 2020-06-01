@@ -18,7 +18,10 @@ const ProfileHeader = (props) => {
       style={{ marginBottom: '120px' }}
     >
       <div className='absolute flex' style={{ bottom: '-75px', left: '50px' }}>
-        <img className='w150 h150 br20 mr20 shadow1' src={avatar_url} />
+        <img
+          className='w150 h150 br20 mr20 shadow1 bg-white'
+          src={avatar_url}
+        />
         <div className='mt34'>
           <h1 className='c-white'>
             {login}

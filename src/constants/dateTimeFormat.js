@@ -1,0 +1,3 @@
+const DAY_MONTHNAME_YEAR = 'DD MMM YYYY'
+
+export { DAY_MONTHNAME_YEAR }

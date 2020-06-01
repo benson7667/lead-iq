@@ -1,22 +1,35 @@
 import React from 'react'
+import { array } from 'prop-types'
 import { RepoCard } from '../../../components'
+import { formatDateAgo } from '../../../utils/dateTime'
 
-const Repos = () => {
+const Repos = (props) => {
+  const { repos } = props
+
   return (
     <section className='ml50 mr50'>
       <h1 className='mb14'>Repositories</h1>
       <ul className='user-project-list'>
-        <div className='user-project-item'>
-          <RepoCard
-            description='Assignment given by Binance'
-            language='javascript'
-            title='binance-assignment'
-            updatedAt='2020-05-19T18:07:30Z'
-          />
-        </div>
+        {repos.map((repo) => {
+          const { id, repoName, description, language, updatedAt } = repo
+          return (
+            <div className='user-project-item' key={id}>
+              <RepoCard
+                description={description}
+                language={language}
+                title={repoName}
+                updatedAt={formatDateAgo(updatedAt)}
+              />
+            </div>
+          )
+        })}
       </ul>
     </section>
   )
+}
+
+Repos.propTypes = {
+  repos: array.isRequired,
 }
 
 export default Repos

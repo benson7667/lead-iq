@@ -7,6 +7,7 @@ const UserProfilePageContainer = (props) => <UserProfilePage {...props} />
 
 const mapStateToProps = (state) => ({
   profileInfo: state.profile.profileInfo,
+  repos: state.profile.repos,
   isLoadingGetProfile: state.profile.isLoadingGetProfile,
   profileError: state.profile.error,
 })
